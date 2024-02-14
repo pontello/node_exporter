@@ -20,6 +20,7 @@ import (
 	"bufio"
 	"errors"
 	"fmt"
+	"github.com/prometheus/procfs"
 	"io"
 	"os"
 	"strings"
@@ -181,6 +182,7 @@ func stuckMountWatcher(mountPoint string, success chan struct{}, logger log.Logg
 
 func mountPointDetails(logger log.Logger) ([]filesystemLabels, error) {
 
+	level.Info(logger).Log("msg", "defaults", "DefaultMountPoint", procfs.DefaultMountPoint)
 	level.Info(logger).Log("msg", "mountPointDetails", "procFilePath(1/mounts)", procFilePath("1/mounts"))
 
 	file, err := os.Open(procFilePath("1/mounts"))

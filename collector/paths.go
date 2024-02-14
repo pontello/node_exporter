@@ -30,7 +30,7 @@ var (
 )
 
 func procFilePath(name string) string {
-	return filepath.Join(*procPath, name)
+	return filepath.Join(procfs.DefaultMountPoint, name)
 }
 
 func sysFilePath(name string) string {
